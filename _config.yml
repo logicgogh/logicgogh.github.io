@@ -36,28 +36,28 @@ author:
 
 #Follow me, you can choose your icon by http://fortawesome.github.io/Font-Awesome/icons/#brand
 follow:
-  # - class: icon-rss
-  # url: /atom.xml
+  - class: icon-rss
+    url: /atom.xml
   - class: icon-weibo
     url: http://www.weibo.com/yixieyanhuo
-  # - class: icon-renren
-  # url: http://renren.com
+  - class: icon-renren
+    url: http://renren.com
   - class: icon-github-alt
     url: http://github.com/logicgogh
-  #  - class: icon-twitter
-  #  url: http://twitter.com/piznlin
+  - class: icon-twitter
+    url: http://twitter.com/piznlin
   - class: icon-google-plus
     url: http://google.com
 
 #Links
 customLinks:
   - item:
-    # - text: 掌心
-    #   url: http://www.zhanxin.info
-    # - text: Jekyll
-    #   url: http://jekyllrb.com
-    # - text: Jekyll Theme
-    #  url: http://www.zhanxin.info/themes.html
+     - text: 掌心
+       url: http://www.zhanxin.info
+     - text: Jekyll
+       url: http://jekyllrb.com
+     - text: Jekyll Theme
+      url: http://www.zhanxin.info/themes.html
     message: Friends
   - item:
     - text: Font Awesome
