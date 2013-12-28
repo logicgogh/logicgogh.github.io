@@ -1,82 +1,70 @@
-markdown: redcarpet
-pygments: true
-paginate: 8
+title:            Site Title
+description:      Describe your website here.
+disqus_shortname: 
+#Your site's domain goes here. Leave localhost server or blank when working locally.
+url:              http://localhost:4000
 
-safe:  false
+# Owner/author information
+owner:
+  name:           Your Name
+  avatar:         avatar.jpg
+  bio:            "Your bio goes here. It shouldn't be super long but a good two sentences or two should suffice."
+  email:          you@email.com
+  # Social networking links used in footer. Update and remove as you like.
+  twitter:        
+  facebook:       
+  github:         
+  stackexchange:  
+  linkedin:       
+  instagram:      
+  flickr:         
+  tumblr:         
+  # For Google Authorship https://plus.google.com/authorship
+  google_plus:   
 
-#Site config
-title: Brave New World
-description: 如无必要，勿增实体.
-keywords: 文字 思考
-url: logicgogh.github.io
-feed: /atom.xml
-favicon: http://jekyllrb.com/favicon.png
+# Background image to be tiled on all pages
+background: ps_neutral.png
 
-#Nav config
-nav:
-  - text: 首页
-    url: /index.html
-  - text: 分类目录 
-    url: /categories.html
-  - text: 文章归档
-    url: /archives.html
-  - text: 联系我
-    url: /contact.html
-  - text: 友情链接
-    url: /links.html
+# Analytics and webmaster tools stuff goes here
+google_analytics:   
+google_verify:      
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+bing_verify:         
 
-#Author config
-author:
-    name: 洛基克
-    email: yixiyanhuo@gmail.com
-    imageLink: http://tp2.sinaimg.cn/1832671293/180/40020872447/1
-    simpleIntro: It's now or never.
-    detailIntro:
-      <p>让我们安静的思考</p>
+# Links to include in top navigation
+# For external links add external: true
+links:
+  - title: Theme Setup
+    url: /theme-setup
+  - title: External Link
+    url: http://mademistakes.com
+    external: true
 
-#Follow me, you can choose your icon by http://fortawesome.github.io/Font-Awesome/icons/#brand
-follow:
-  - class: icon-rss
-    url: /atom.xml
-  - class: icon-weibo
-    url: http://www.weibo.com/yixieyanhuo
-  - class: icon-renren
-    url: http://renren.com
-  - class: icon-github-alt
-    url: http://github.com/logicgogh
-  - class: icon-twitter
-    url: http://twitter.com/piznlin
-  - class: icon-google-plus
-    url: http://google.com
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    America/New_York
+future:      true
+pygments:    true
+markdown:    kramdown
 
-#Links
-customLinks:
-  - item:
-     - text: 掌心
-       url: http://www.zhanxin.info
-     - text: Jekyll
-       url: http://jekyllrb.com
-     - text: Jekyll Theme
-      url: http://www.zhanxin.info/themes.html
-    message: Friends
-  - item:
-    - text: Font Awesome
-      url: http://fortawesome.github.io/Font-Awesome/
-    - text: Google Font
-      url: http://www.google.com/fonts/
-    - text: jQuery
-      url: http://jquery.com/
-    message: 其他相关链接
+# https://github.com/mojombo/jekyll/wiki/Permalinks
+permalink:   /:categories/:title
 
-#googleAnaly, your id link UA-12345678-X
-googleAnaly:
-  config: true
-  id: UA-46735265-1
-#comment config
-disqus:
-  config: false
-  id: piznblog
+# Amount of post to show on home page
+paginate: 5
 
-duoshuo:
-  config: true
-  id: logicgogh
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: true
+
+  coderay:
+    coderay_line_numbers: nil
+    coderay_line_numbers_start: 1
+    coderay_tab_width: 4
+    coderay_bold_every: 10
+    coderay_css: class
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
