@@ -2,13 +2,13 @@ markdown: redcarpet
 pygments: true
 paginate: 8
 
-safe:  false
+safe:  ture
 
 #Site config
-title: Jekyll Theme
-description: Just another Jekyll theme design and code by zhanxin.info.
-keywords: Jekyll Theme
-url: http://pizn.github.io/kunka
+title: 美丽新世界
+description: brave new word
+keywords: look
+url: logicgogh.github.io
 feed: /atom.xml
 favicon: http://jekyllrb.com/favicon.png
 
