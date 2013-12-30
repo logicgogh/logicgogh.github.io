@@ -10,6 +10,7 @@ image:
   credit: Michael Rose
   creditlink: http://mademistakes.com
 comments: true  
+math: ture
 ---
 
 Below is just about everything you'll need to style in the theme. Check the source code to see the many embedded elements within paragraphs.
@@ -30,7 +31,7 @@ Below is just about everything you'll need to style in the theme. Check the sour
 
 Lorem ipsum dolor sit amet, test link adipiscing elit. **This is strong** **这是粗体**. Nullam dignissim convallis est. Quisque aliquam.
 
-![Smithsonian Image]({{ site.url }}/images/3953273590_704e3899d5_m.jpg)
+![Smithsonian Image](http://h.hiphotos.baidu.com/image/w%3D400/sign=cfc8e13ea918972ba33a01cad6cc7b9d/728da9773912b31baf8f10038418367adab4e13d.jpg)
 {: .pull-right}
 
 *This is emphasized*. Donec faucibus. Nunc iaculis suscipit dui. 53 = 125. Water is H<sub>2</sub>O. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. The New York Times <cite>(That’s a citation)</cite>. <u>Underline</u>. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.
@@ -104,3 +105,13 @@ Make any link standout more when applying the `.btn` class.
 
 <div markdown="0"><a href="#" class="btn">This is a button</a></div>
 
+## Math equition
+
+<div>
+
+$$
+\left [ - \frac{\hbar^2}{2 m} \frac{\partial^2}{\partial x^2} + V \right ] \Psi
+= i \hbar \frac{\partial}{\partial t} \Psi
+$$
+
+</div>
