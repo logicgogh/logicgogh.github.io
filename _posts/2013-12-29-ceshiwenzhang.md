@@ -6,6 +6,7 @@ modified: 2013-05-31
 category: articles
 tags: [测试]
 image:
+  local: true
   feature: so-simple-sample-image-1.jpg
   credit: Michael Rose
   creditlink: http://mademistakes.com
