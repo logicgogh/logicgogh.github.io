@@ -6,8 +6,8 @@ modified: 2013-05-31
 category: articles
 tags: [测试]
 image:
-  local: true
-  feature: so-simple-sample-image-1.jpg
+  local:
+  feature: http://ww1.sinaimg.cn/mw1024/4783cef2tw1ec2wm1s2kxj211y0lcgn2.jpg
   credit: Michael Rose
   creditlink: http://mademistakes.com
 comments: true  
@@ -32,7 +32,7 @@ Below is just about everything you'll need to style in the theme. Check the sour
 
 Lorem ipsum dolor sit amet, test link adipiscing elit. **This is strong** **这是粗体**. Nullam dignissim convallis est. Quisque aliquam.
 
-![Smithsonian Image](http://h.hiphotos.baidu.com/image/w%3D400/sign=cfc8e13ea918972ba33a01cad6cc7b9d/728da9773912b31baf8f10038418367adab4e13d.jpg)
+![Smithsonian Image](http://ww4.sinaimg.cn/bmiddle/4783cef2tw1ec2wtzq3f4j211y0lc0yg.jpg)
 {: .pull-right}
 
 *This is emphasized*. Donec faucibus. Nunc iaculis suscipit dui. 53 = 125. Water is H<sub>2</sub>O. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. The New York Times <cite>(That’s a citation)</cite>. <u>Underline</u>. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.
