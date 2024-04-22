@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>《Rich Sutton: The Bitter Lession》译 | Brave New World</title>
+<meta name="keywords" content="">
+<meta name="description" content="Richard S. Sutton是著名的AI学者，著有知名的《强化学习》一书，他提出的对提升AI到AGI的实现路径的看法，值得深思。以下为原文译文：
+从70年的AI研究中，我们可以获得的最大的教训是：能够充分利用算力的通用的方法，往往是最有用的方法，而且不是有用一点点。最根本的原因是摩尔定律，或者更确切的讲，是每单元计算成本持续指数性下降的概况。大多数AI研究都是在假设智能体(agent)能用的算力是恒定的条件下进行的（这种情况下，利用人类知识可能是唯一能提升智能体表现的方法了），但是，只要眼光稍微放长远一点，就会发现未来不可避免的会有更大规模的可用算力。虽然短期内，研究者利用人类的领域知识，能够提升agent在该领域的表现，但是长远来看，唯一关键的方法还是充分利用算力。虽然这两个方案理论上并不相互冲突，但是在实践中往往需要二选其一。研究者把时间经历放在其中一个上面，就无法去充分发展另一个，在内心里也会忠于某一个方案。另外，利用人类知识的方案，往往倾向于提出非常复杂的实现方法，而使得其很难兼容基于算力的通用方法。这个惨痛的教训对于研究者来说总是姗姗来迟，所以我们回顾一些最为突出的例子往往大有裨益。
+在计算国际象棋(chess)领域，在1997年击败世界冠军Kasparov的算法，是一种大规模深度搜索算法。这让当时主流的计算象棋研究者们很失望，他们追求的方法是让计算机充分理解和利用人类对象棋棋局知识，从而获胜。当这种更简单的、基于搜索和算力的方法被事实证明是具有巨大的优势的时候，这些利用人类知识的研究员还在嘴硬。他们说“暴力”搜索的算法可能赢的了一时，但是它不是一个通用的策略，不管怎样起码人类不是这么下象棋的。然而这些研究者期望的以“人类的”方式下棋的方案总是会让他们失望。
+类似的情况，在计算围棋(Go)中也在上演，只是比国际象棋推迟了20年而已。一开始，巨量的经历被用在如何利用人类现有知识或者学习棋局的一些特征上，但是在基于大规模的搜索算法面前，这些努力显得无关紧要，甚至对算法有害无益。另一个同样重要的点，是通过自我对弈来学习价值函数（在其他的游戏里，这点同样很重要，既是是在1997年击败世界冠军的国际象棋算法中，学习并不是核心点）。通过自我博弈进行学习，以及通用地学习，像大规模搜索一样，一样充分依赖于算力的利用。搜索和学习是基于大算力的AI研究方法中最重要的两类技术。在计算围棋中和计算国际象棋中，研究者一开始的努力方向是充分利用人类的知识和理解（因此不需要太多搜索），但是进展不大，直到充分拥抱了基于大算力的搜索和学习的方法，才取得了长足的进展。
+在语音识别领域，早在70年代，有一个DARPA赞助了的比赛。参赛者中有一大批是基于人类知识的定制方案，他们利用了词汇、音素和发音等知识。与此同时，也有一批人是基于当时看来较新的方法，更偏向统计和算力的方法，如基于HMMs（隐马尔可夫模型）来解决问题。统计方法再一次优于基于人类知识的方法。这导致了所有的NLP领域在过去的几十年中发生了巨大变化和转向，那就是基于统计和算力的方法逐渐取代人类知识成为主流方法。而最近深度学习在语音识别领域的兴起是朝着这一一致方向迈出的更进一步。深度学习的方法使用更少的人类知识、更多的算力和更大规模的训练集，对语音识别系统产生了戏剧性的性能提升。就像在这个比赛中一样，研究者总是试图让语音识别系统工作的和自己大脑工作的方式（自认为）一样，他们试图把自己的知识放入系统。但是结果总是适得其反，浪费了研究员的大量时间经历，特别是随着摩尔定律的作用，在和基于大算力的方法对比时。
+在计算机视觉领域，也有类似的事情发生。早期的计算机视觉方法，认为视觉就是搜索物体的边界、广义柱体或者SIFT特征。但是当前这些概念方法都被抛弃了。取而代之的是基于深度神经网络的现代方法，它仅仅使用卷积和一些不变性原理，得到了好得多的效果。
+这是一个很大的教训。只要一个领域我们还没有彻底的了解它，我们就会持续的犯同样的错误。为了预见并有效的预防这种情况发生，我们需要理解这类错误的诱惑力在哪。我们不得不面对的惨痛的教训就是：按照我们自认为的“我们是这样思考的”的路子构建的智能体，长远来看是行不通的。这个惨痛的教训是基于对历史的总结：
+AI研究者总是试图将知识构建入智能体。 这样做短期内是有效的，且能够满足研究者的个人偏好 这样做长期看，会停滞甚至阻碍智能体性能的进一步提升 突破性的进展最终以相反的方式取得：基于大规模的算力和学习。 最终智能体的成功带着一丝苦涩，它的机制还没有被人们完全理解，并且它的实现路径，并不是一种受人青睐的、以人为中心的路径。
+应该从惨痛的教训中吸取的一个经验，是重视通用方法的巨大潜力。即使可用的算力变得非常强大，这些方法也会随着算力的增加而继续扩容。而可以以这种方式任意扩容的两种方法, 似乎就是是搜索和学习了。
+另一个从惨痛的教训中学习到的通用的点是，真正的心智内涵里，包含了无可救药的复杂度；我们不应该企图用一种简单的方法，去描述心智的内涵，比如去描述思考空间、对象、多智能体或者对称性这些复杂概念，这些概念都是任意且内秉复杂的外部世界的一部分。我们不应该也没有能力去直接建模这些概念，因为它们的复杂度是无限的；我们应该建模“元方法(meta-methods)，那些能够识别并捕获任意复杂度的方法。这中“元方法”的关键是它们能够自己找到搜索到对复杂概念的有效近似，而不是靠我们人工的去建模这些近似。我们希望AI智能体能够自己去探索并学习对它来说未知的概念，而不是仅仅囊括那些我们（人类）已经发现掌握过的概念。基于我们（人类）已知的概念去构建智能体，只会让我们更难看清，探索学习这个过程本身是怎么完成的。
+原文链接：http://www.incompleteideas.net/IncIdeas/BitterLesson.html/">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/thebitterlession_reading/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/thebitterlession_reading/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Brave New World (Alt + H)">Brave New World</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      《Rich Sutton: The Bitter Lession》译
+    </h1>
+    <div class="post-meta"><span title='2024-04-22 18:31:45 +0800 CST'>April 22, 2024</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Richard S. Sutton是著名的AI学者，著有知名的《强化学习》一书，他提出的对提升AI到AGI的实现路径的看法，值得深思。以下为原文译文：</p>
+<p>从70年的AI研究中，我们可以获得的最大的教训是：能够充分利用算力的通用的方法，往往是最有用的方法，而且不是有用一点点。最根本的原因是摩尔定律，或者更确切的讲，是每单元计算成本持续指数性下降的概况。大多数AI研究都是在假设智能体(agent)能用的算力是恒定的条件下进行的（这种情况下，利用人类知识可能是唯一能提升智能体表现的方法了），但是，只要眼光稍微放长远一点，就会发现未来不可避免的会有更大规模的可用算力。虽然短期内，研究者利用人类的领域知识，能够提升agent在该领域的表现，但是长远来看，唯一关键的方法还是充分利用算力。虽然这两个方案理论上并不相互冲突，但是在实践中往往需要二选其一。研究者把时间经历放在其中一个上面，就无法去充分发展另一个，在内心里也会忠于某一个方案。另外，利用人类知识的方案，往往倾向于提出非常复杂的实现方法，而使得其很难兼容基于算力的通用方法。这个惨痛的教训对于研究者来说总是姗姗来迟，所以我们回顾一些最为突出的例子往往大有裨益。</p>
+<p>在计算国际象棋(chess)领域，在1997年击败世界冠军Kasparov的算法，是一种大规模深度搜索算法。这让当时主流的计算象棋研究者们很失望，他们追求的方法是让计算机充分理解和利用人类对象棋棋局知识，从而获胜。当这种更简单的、基于搜索和算力的方法被事实证明是具有巨大的优势的时候，这些利用人类知识的研究员还在嘴硬。他们说“暴力”搜索的算法可能赢的了一时，但是它不是一个通用的策略，不管怎样起码人类不是这么下象棋的。然而这些研究者期望的以“人类的”方式下棋的方案总是会让他们失望。</p>
+<p>类似的情况，在计算围棋(Go)中也在上演，只是比国际象棋推迟了20年而已。一开始，巨量的经历被用在如何利用人类现有知识或者学习棋局的一些特征上，但是在基于大规模的搜索算法面前，这些努力显得无关紧要，甚至对算法有害无益。另一个同样重要的点，是通过自我对弈来学习价值函数（在其他的游戏里，这点同样很重要，既是是在1997年击败世界冠军的国际象棋算法中，学习并不是核心点）。通过自我博弈进行学习，以及通用地学习，像大规模搜索一样，一样充分依赖于算力的利用。搜索和学习是基于大算力的AI研究方法中最重要的两类技术。在计算围棋中和计算国际象棋中，研究者一开始的努力方向是充分利用人类的知识和理解（因此不需要太多搜索），但是进展不大，直到充分拥抱了基于大算力的搜索和学习的方法，才取得了长足的进展。</p>
+<p>在语音识别领域，早在70年代，有一个DARPA赞助了的比赛。参赛者中有一大批是基于人类知识的定制方案，他们利用了词汇、音素和发音等知识。与此同时，也有一批人是基于当时看来较新的方法，更偏向统计和算力的方法，如基于HMMs（隐马尔可夫模型）来解决问题。统计方法再一次优于基于人类知识的方法。这导致了所有的NLP领域在过去的几十年中发生了巨大变化和转向，那就是基于统计和算力的方法逐渐取代人类知识成为主流方法。而最近深度学习在语音识别领域的兴起是朝着这一一致方向迈出的更进一步。深度学习的方法使用更少的人类知识、更多的算力和更大规模的训练集，对语音识别系统产生了戏剧性的性能提升。就像在这个比赛中一样，研究者总是试图让语音识别系统工作的和自己大脑工作的方式（自认为）一样，他们试图把自己的知识放入系统。但是结果总是适得其反，浪费了研究员的大量时间经历，特别是随着摩尔定律的作用，在和基于大算力的方法对比时。</p>
+<p>在计算机视觉领域，也有类似的事情发生。早期的计算机视觉方法，认为视觉就是搜索物体的边界、广义柱体或者SIFT特征。但是当前这些概念方法都被抛弃了。取而代之的是基于深度神经网络的现代方法，它仅仅使用卷积和一些不变性原理，得到了好得多的效果。</p>
+<p>这是一个很大的教训。只要一个领域我们还没有彻底的了解它，我们就会持续的犯同样的错误。为了预见并有效的预防这种情况发生，我们需要理解这类错误的诱惑力在哪。我们不得不面对的惨痛的教训就是：按照我们自认为的“我们是这样思考的”的路子构建的智能体，长远来看是行不通的。这个惨痛的教训是基于对历史的总结：</p>
+<ol>
+<li>AI研究者总是试图将知识构建入智能体。</li>
+<li>这样做短期内是有效的，且能够满足研究者的个人偏好</li>
+<li>这样做长期看，会停滞甚至阻碍智能体性能的进一步提升</li>
+<li>突破性的进展最终以相反的方式取得：基于大规模的算力和学习。</li>
+</ol>
+<p>最终智能体的成功带着一丝苦涩，它的机制还没有被人们完全理解，并且它的实现路径，并不是一种受人青睐的、以人为中心的路径。</p>
+<p>应该从惨痛的教训中吸取的一个经验，是重视通用方法的巨大潜力。即使可用的算力变得非常强大，这些方法也会随着算力的增加而继续扩容。而可以以这种方式任意扩容的两种方法, 似乎就是是搜索和学习了。</p>
+<p>另一个从惨痛的教训中学习到的通用的点是，真正的心智内涵里，包含了无可救药的复杂度；我们不应该企图用一种简单的方法，去描述心智的内涵，比如去描述思考空间、对象、多智能体或者对称性这些复杂概念，这些概念都是任意且内秉复杂的外部世界的一部分。我们不应该也没有能力去直接建模这些概念，因为它们的复杂度是无限的；我们应该建模“元方法(meta-methods)，那些能够识别并捕获任意复杂度的方法。这中“元方法”的关键是它们能够自己找到搜索到对复杂概念的有效近似，而不是靠我们人工的去建模这些近似。我们希望AI智能体能够自己去探索并学习对它来说未知的概念，而不是仅仅囊括那些我们（人类）已经发现掌握过的概念。基于我们（人类）已知的概念去构建智能体，只会让我们更难看清，探索学习这个过程本身是怎么完成的。</p>
+<p><em>原文链接：http://www.incompleteideas.net/IncIdeas/BitterLesson.html/</em></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">Brave New World</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
