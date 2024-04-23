@@ -2,3 +2,6 @@ baseURL: https://logicgogh.github.io/
 languageCode: zh-cn
 title: Brave New World
 theme: ["PaperMod"]
+
+params:
+  comments: true
