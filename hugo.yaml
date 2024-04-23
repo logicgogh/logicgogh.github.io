@@ -5,3 +5,4 @@ theme: ["PaperMod"]
 
 params:
   comments: true
+  math: true
